@@ -39,7 +39,8 @@ class ProductService {
     }
     
     func updateProductName(id: Int, name: String, successHandler: @escaping () -> (), errorHandler: @escaping (Error) -> ()) {
-        let updateRequest = BaseRequest<Product>(condition: ["Product_Id": id as AnyObject, "ProductName" : name as AnyObject])
+        let updateRequest = BaseRequest<Product>(condition: ["Product_Id": id as AnyObject], values: ["ProductName" : name as AnyObject])
+        
         storage.update(request: updateRequest) { error in
             if let dbError = error{
                 errorHandler(dbError)

@@ -12,6 +12,7 @@ protocol Request {
     associatedtype ResultType: EntityNameHolder
     var range: NSRange { get set }
     var condition: [String:AnyObject] { get set }
+    var values: [String:AnyObject] { get set }
     var sorted: SortedBy { get set}
 }
 

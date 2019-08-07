@@ -50,24 +50,21 @@ class ProductsTableViewController: UITableViewController, WarehouseChild {
 
     //FIXIT: Global observer on db changes
     private func trackChanges(id: Int64) {
-    let sqlLiteral = SQLLiteral(sql: "SELECT * FROM tblProducts WHERE \(Product.Columns.Product_Id.rawValue) = :id", arguments:  ["id": id])
-    let request = SQLRequest<Row>(literal: sqlLiteral)
-        productObserver = request.observationForFirst().start(in: dbQueue, onError: { (error) in
-            print(error)
-        }, onChange: { [weak self]  item in
-            if let product = item {
-                let productParser = ProductParser()
-                if let product = productParser.parseArray(data: [product])!.first {
-                    if let index = self?.products.index(where: {$0.id == product.id}) {
-                        self?.products[index] = product
-                        DispatchQueue.main.async {
+            let sqlLiteral = SQLLiteral(sql: "SELECT * FROM tblProducts WHERE \(Product.Columns.Product_Id.rawValue) = :id", arguments:  ["id": id])
+            let request = SQLRequest<Row>(literal: sqlLiteral)
+            self.productObserver = request.observationForFirst().start(in: dbQueue, onError: { (error) in
+                print(error)
+            }, onChange: { [weak self]  item in
+                if let product = item {
+                    let productParser = ProductParser()
+                    if let product = productParser.parseArray(data: [product])!.first {
+                        if let index = self?.products.index(where: {$0.id == product.id}) {
+                            self?.products[index] = product
                             self?.setupProductsDataSource()
-
                         }
                     }
                 }
-            }
-        })
+            })
     }
     
     private func setupProductsDataSource() {
