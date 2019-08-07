@@ -15,7 +15,7 @@ class ProductService {
     }
     
     func getProducts(range: NSRange, successHandler: @escaping ([Product]) -> (), errorHandler: @escaping (Error) -> ()) {
-        let getProductsRequest = BaseRequest<Product>(range: range, modelType: .product)
+        let getProductsRequest = BaseRequest<Product>(range: range)
             storage.fetch(request: getProductsRequest) { (result) in
                 switch result {
                 case .success(let items):
@@ -27,7 +27,7 @@ class ProductService {
     }
     
     func getFilteredProductsByPrice( price: Double, range: NSRange, successHandler: @escaping ([Product]) -> (), errorHandler: @escaping (Error) -> ()) {
-        let getProductsRequest = BaseRequest<Product>(range: range, modelType: .product, condition: ["P_Price": price as AnyObject])
+        let getProductsRequest = BaseRequest<Product>(range: range, condition: ["P_Price": price as AnyObject])
         storage.fetch(request: getProductsRequest) { (result) in
             switch result {
             case .success(let items):
@@ -39,7 +39,7 @@ class ProductService {
     }
     
     func updateProductName(id: Int, name: String, successHandler: @escaping () -> (), errorHandler: @escaping (Error) -> ()) {
-        let updateRequest = BaseRequest<Product>(modelType: .product, condition: ["Product_Id": id as AnyObject, "ProductName" : name as AnyObject])
+        let updateRequest = BaseRequest<Product>(condition: ["Product_Id": id as AnyObject, "ProductName" : name as AnyObject])
         storage.update(request: updateRequest) { error in
             if let dbError = error{
                 errorHandler(dbError)

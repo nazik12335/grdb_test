@@ -61,19 +61,10 @@ class ProductsTableViewController: UITableViewController, WarehouseChild {
                     if let index = self?.products.index(where: {$0.id == product.id}) {
                         self?.products[index] = product
                         self?.setupProductsDataSource()
-                        self?.reloadRow(index)
                     }
                 }
             }
         })
-    }
-    
-    private func reloadRow(_ row: Int) {
-        DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
-            self.tableView.endUpdates()
-        }
     }
     
     private func setupProductsDataSource() {

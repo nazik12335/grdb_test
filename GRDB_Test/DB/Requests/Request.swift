@@ -9,9 +9,8 @@
 import Foundation
 
 protocol Request {
-    associatedtype ResultType
+    associatedtype ResultType: EntityNameHolder
     var range: NSRange { get set }
-    var modelType: ModelType { get set }
     var condition: [String:AnyObject] { get set }
     var sorted: SortedBy { get set}
 }
@@ -32,9 +31,4 @@ enum SortedBy {
     init() {
         self = .none
     }
-}
-
-enum ModelType {
-    case product
-    case productGroup
 }

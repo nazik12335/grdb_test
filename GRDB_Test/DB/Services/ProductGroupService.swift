@@ -16,7 +16,7 @@ class ProductGroupsService {
     }
     
     func getProductGroups(range: NSRange, successHandler: @escaping ([ProductGroup]) -> (), errorHandler: @escaping (Error) -> ()) {
-        let getProductGroups = BaseRequest<ProductGroup>(range: range, modelType: .productGroup)
+        let getProductGroups = BaseRequest<ProductGroup>(range: range)
         storage.fetch(request: getProductGroups) { (result) in
             switch result {
             case .success(let items):

@@ -9,16 +9,14 @@
 import Foundation
 
 
-class BaseRequest<T>: Request {
+class BaseRequest<T: EntityNameHolder>: Request {
     typealias ResultType = T
     var condition: [String:AnyObject]
-    var modelType: ModelType
     var range: NSRange
     var sorted: SortedBy
     
-    init(range: NSRange = NSMakeRange(0, 0), modelType: ModelType, condition: [String:AnyObject] = [:], sorted: SortedBy = SortedBy()) {
+    init(range: NSRange = NSMakeRange(0, 0), condition: [String:AnyObject] = [:], sorted: SortedBy = SortedBy()) {
         self.range = range
-        self.modelType = modelType
         self.condition = condition
         self.sorted = sorted
     }

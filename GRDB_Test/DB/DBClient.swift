@@ -86,27 +86,16 @@ final class DBClient: Storage {
 
 extension Request {
     func toSelectSQL() -> SQLLiteral{
-        var sqlLiteral = SQLLiteral(sql: "SELECT * FROM \(modelType()) ")
+        var sqlLiteral = SQLLiteral(sql: "SELECT * FROM \(ResultType.entityName) ")
         sqlLiteral.append(literal: condition())
         sqlLiteral.append(sql: "LIMIT \(self.range.length) OFFSET \(self.range.location)")
         return sqlLiteral
     }
     
     func toUpdateSQL() -> SQLLiteral{
-        var sqlLiteral = SQLLiteral(sql: "UPDATE \(modelType()) ")
+        var sqlLiteral = SQLLiteral(sql: "UPDATE \(ResultType.entityName) ")
         sqlLiteral.append(literal: set())
         return sqlLiteral
-    }
-    
-    private func modelType() -> String {
-        var modelType = ""
-        switch self.modelType {
-        case .product:
-            modelType = "tblProducts"
-        case .productGroup:
-            modelType = "tblProductGroups"
-        }
-        return modelType
     }
     
     private func set() -> SQLLiteral {
@@ -136,5 +125,21 @@ extension Request {
             }
         }
         return condition!
+    }
+}
+
+protocol EntityNameHolder {
+    static var entityName: String { get }
+}
+
+extension Product: EntityNameHolder {
+    static var entityName: String {
+        return "tblProducts"
+    }
+}
+
+extension ProductGroup: EntityNameHolder {
+    static var entityName: String {
+        return "tblProductGroups"
     }
 }
