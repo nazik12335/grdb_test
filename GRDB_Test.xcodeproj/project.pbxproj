@@ -32,7 +32,7 @@
 		3C598DD922FACCFF005FDF40 /* ParserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C598DD822FACCFF005FDF40 /* ParserFactory.swift */; };
 		3C598DDB22FACD37005FDF40 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C598DDA22FACD37005FDF40 /* Request.swift */; };
 		3C598DDD22FACDEC005FDF40 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C598DDC22FACDEC005FDF40 /* BaseRequest.swift */; };
-		3CF6A48C22F5CC6E009E6BD8 /* products.db in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6A48B22F5CC6E009E6BD8 /* products.db */; };
+		3C85A63922FB0F5300CCFC66 /* products.db in Resources */ = {isa = PBXBuildFile; fileRef = 3C85A63822FB0F5200CCFC66 /* products.db */; };
 		9B99D4152A28C9A770F2C5E0 /* Pods_GRDB_TestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C77EFB795A63F3857809482 /* Pods_GRDB_TestTests.framework */; };
 		BCDA502E1534E5E3125304C5 /* Pods_GRDB_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F876F5722225E0F1C003D /* Pods_GRDB_Test.framework */; };
 /* End PBXBuildFile section */
@@ -79,7 +79,7 @@
 		3C598DD822FACCFF005FDF40 /* ParserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserFactory.swift; sourceTree = "<group>"; };
 		3C598DDA22FACD37005FDF40 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3C598DDC22FACDEC005FDF40 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
-		3CF6A48B22F5CC6E009E6BD8 /* products.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = products.db; sourceTree = "<group>"; };
+		3C85A63822FB0F5200CCFC66 /* products.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = products.db; sourceTree = "<group>"; };
 		7C77EFB795A63F3857809482 /* Pods_GRDB_TestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRDB_TestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F876F5722225E0F1C003D /* Pods_GRDB_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GRDB_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63273AA7A5543446C5FAC54 /* Pods-GRDB_TestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GRDB_TestTests.release.xcconfig"; path = "Target Support Files/Pods-GRDB_TestTests/Pods-GRDB_TestTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,11 +136,11 @@
 				3C598DDF22FACE4D005FDF40 /* ViewControllers */,
 				3C598DE122FACE94005FDF40 /* DataSources */,
 				3C598DE022FACE71005FDF40 /* Views */,
+				3C85A63822FB0F5200CCFC66 /* products.db */,
 				3C13C17A22F21D8C00BAF81C /* Main.storyboard */,
 				3C13C17D22F21D8F00BAF81C /* Assets.xcassets */,
 				3C13C17F22F21D8F00BAF81C /* LaunchScreen.storyboard */,
 				3C13C18222F21D8F00BAF81C /* Info.plist */,
-				3CF6A48B22F5CC6E009E6BD8 /* products.db */,
 			);
 			path = GRDB_Test;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CF6A48C22F5CC6E009E6BD8 /* products.db in Resources */,
+				3C85A63922FB0F5300CCFC66 /* products.db in Resources */,
 				3C13C1D322F42A7800BAF81C /* DetailsTableViewCell.xib in Resources */,
 				3C13C18122F21D8F00BAF81C /* LaunchScreen.storyboard in Resources */,
 				3C13C17E22F21D8F00BAF81C /* Assets.xcassets in Resources */,

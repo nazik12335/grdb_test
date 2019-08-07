@@ -59,7 +59,6 @@ final class DBClient: Storage {
     }
     
     func update<T>(request: T, handler: @escaping (NSError?) -> ()) where T : Request {
-        
         let sqlLiteral = request.toUpdateSQL()
         queue.async {
             do {
@@ -99,32 +98,31 @@ extension Request {
     }
     
     private func set() -> SQLLiteral {
-        guard self.condition.capacity > 0 else {return SQLLiteral(sql: "")}
-        var condition: SQLLiteral?
+        guard self.condition.keys.count > 0 else {return SQLLiteral(sql: "")}
+        var setLiteral: SQLLiteral?
         for item in self.condition {
             let literal = SQLLiteral(sql: "WHERE \(item.key) = ? ", arguments: [DatabaseValue(value: item.value)])
-            if condition == nil {
-                condition = SQLLiteral(sql: "SET \(item.key) = ? ", arguments: [DatabaseValue(value: item.value)])
+            if setLiteral == nil {
+                setLiteral = SQLLiteral(sql: "SET \(item.key) = ? ", arguments: [DatabaseValue(value: item.value)])
             }else {
-                condition?.append(literal: literal)
+                setLiteral?.append(literal: literal)
             }
         }
-        return condition!
-        
+        return setLiteral!
     }
     
     private func condition() -> SQLLiteral {
-        guard self.condition.capacity > 0 else {return SQLLiteral(sql: "")}
-        var condition: SQLLiteral?
+        guard self.condition.keys.count > 0 else {return SQLLiteral(sql: "")}
+        var conditionLiteral: SQLLiteral?
         for item in self.condition {
             let literal = SQLLiteral(sql: "AND \(item.key) = ? ", arguments: [DatabaseValue(value: item.value)])
-            if condition == nil {
-                condition = SQLLiteral(sql: "WHERE \(item.key) = ? ", arguments: [DatabaseValue(value: item.value)])
+            if conditionLiteral == nil {
+                conditionLiteral = SQLLiteral(sql: "WHERE \(item.key) = ? ", arguments: [DatabaseValue(value: item.value)])
             }else {
-                condition?.append(literal: literal)
+                conditionLiteral?.append(literal: literal)
             }
         }
-        return condition!
+        return conditionLiteral!
     }
 }
 
