@@ -157,7 +157,6 @@
 		3C18B9AC22F8C90D00C7DBFB /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				3C18B9B822FAB1E800C7DBFB /* SegmentedViewController.swift */,
 				3C598DDE22FACE1F005FDF40 /* Requests */,
 				3C18B9B022F8C9C800C7DBFB /* Services */,
 				3C13C1C222F2FC4600BAF81C /* DBClient.swift */,
@@ -211,6 +210,7 @@
 				3C13C17822F21D8C00BAF81C /* ProductsTableViewController.swift */,
 				3C598DD422FAC0EA005FDF40 /* ProductGroupsTableViewController.swift */,
 				3C13C1C822F350DD00BAF81C /* ProductDetailsTableViewController.swift */,
+				3C18B9B822FAB1E800C7DBFB /* SegmentedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
