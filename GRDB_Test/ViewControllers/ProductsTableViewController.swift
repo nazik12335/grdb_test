@@ -60,7 +60,10 @@ class ProductsTableViewController: UITableViewController, WarehouseChild {
                 if let product = productParser.parseArray(data: [product])!.first {
                     if let index = self?.products.index(where: {$0.id == product.id}) {
                         self?.products[index] = product
-                        self?.setupProductsDataSource()
+                        DispatchQueue.main.async {
+                            self?.setupProductsDataSource()
+
+                        }
                     }
                 }
             }
